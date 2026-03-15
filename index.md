@@ -4,31 +4,38 @@ Welcome to the documentation for the **Sport Comment Web Application**.
 
 This documentation explains how to use the application and how developers can maintain or extend it.
 
-## Documentation Sections
+---
 
-### Conceptual Overview
+# Documentation Sections
+
+## Conceptual Overview
 Learn the key ideas behind how the system works.
 
 - [Conceptual Overview](concept-overview.md)
 
-### User Guide
+---
+
+## User Guide
 Instructions for sports fans who want to use the website.
 
-- Create an account
-- Log in
-- Find games and players
-- Post and interact with comments
+- [Create an Account](user-guide/create-account.md)
+- [Log In](user-guide/log-in.md)
+- [Find Games and Players](user-guide/find-events-and-comments.md)
+- [Post and Interact with Comments](user-guide/post-and-interact-with-comments.md)
 
-### Developer Guide
+---
+
+## Developer Guide
 Instructions for developers who want to run or maintain the project.
 
-- Set up the development environment
-- Run the application locally
-- Understand comment data flow
+- [Set Up the Development Environment](developer-guide/setup-development-environment.md)
+- [Run the Application Locally](developer-guide/run-the-application-locally.md)
+- [Understand Comment Data Flow](developer-guide/understand-comment-data-flow.md)
 
-### Reference Documentation
+---
+
+## Reference Documentation
 Technical reference material.
 
-- FAQ
-- API endpoints
-- Database data model
+- [FAQ](reference/faq.md)
+- [API and Database Reference](reference/api-and-database-reference.md)
