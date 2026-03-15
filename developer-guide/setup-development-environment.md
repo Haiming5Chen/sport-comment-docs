@@ -22,6 +22,7 @@ To verify that Node.js is installed, run:
 
 ```bash
 node -v
+```
 # Set Up the Development Environment
 
 ```text
