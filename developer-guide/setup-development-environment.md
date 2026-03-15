@@ -25,37 +25,44 @@ node -v
 ```
 # Set Up the Development Environment
 
-```text
-Steps
+## Steps
 
-1. Clone the repository
+```bash
+# Step 1: Clone the repository
 git clone <repository-url>
 
-2. Navigate to the project folder
+# Step 2: Navigate to the project folder
 cd <project-folder-name>
 
-3. Open the project in your editor
+# Step 3: Open the project in your editor
 code .
 
-4. Install project dependencies
+# Step 4: Install project dependencies
 npm install
 
-5. Create a local environment configuration file
+# Step 5: Create a local environment configuration file
 touch .env.local
 
-Example configuration:
-
+# Example configuration for .env.local
 SPORTSDATAIO_KEY=your_api_key
 FIREBASE_PROJECT_ID=your_project_id
 FIREBASE_PRIVATE_KEY=your_private_key
 FIREBASE_CLIENT_EMAIL=your_client_email
 
-Do not commit .env.local to GitHub.
+# Do not commit .env.local to GitHub.
 
-6. Verify setup
-
-Check that the following exists in the project directory:
-
+# Step 6: Verify setup
+# Check that the following exists in the project directory
 node_modules/
 .env.local
 package.json
+```
+
+## Result
+
+If setup is successful:
+
+- Dependencies install without errors
+- The `node_modules` folder appears
+- Environment variables are configured
+- The application is ready to run locally
