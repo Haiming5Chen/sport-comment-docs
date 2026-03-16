@@ -20,9 +20,15 @@ Before you begin, make sure that:
 ## Reply to a Comment
 
 1. Click the **conversation bubble** under the comment
-2. Click the input box labeled **Write a reply...**
-3. Type your reply
-4. Click **Submit**
+2. A reply input box will appear directly under that comment.
+
+![Reply input box under a comment](../images/reply.png)
+
+*Figure: When replying to a comment, use the reply input box that appears directly under the comment instead of the main comment box at the bottom of the page.*
+
+3. Click the input box labeled **Write a reply...**
+4. Type your reply
+5. Click **Submit**
 
 ## Interact with a Comment
 
