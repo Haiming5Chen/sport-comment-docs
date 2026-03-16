@@ -109,6 +109,8 @@ Player statistics are written to:
 nbaGames/{gameId}/players/{playerId}
 ```
 
+This `players` collection is a **subcollection inside each game document**.
+
 ---
 
 # API Authentication Errors
@@ -129,53 +131,129 @@ Possible causes:
 
 ---
 
-# 3. Database Reference (Firestore)
+# 3. Firestore Database Structure
 
-The system stores sports data in **Firestore collections**.
+The application stores sports data using several top-level collections in Firestore.
 
-Each league follows the same collection pattern.
-
----
-
-## 3.1 Naming Pattern by League
-
-Each league contains three top-level collections:
+The main collections are:
 
 ```
-{league}Teams
-{league}Players
-{league}Games
-```
-
-Examples:
-
-```
+nbaGames
 nbaTeams
 nbaPlayers
-nbaGames
+users
+comments
 ```
 
-```
-nflTeams
-nflPlayers
-nflGames
-```
+Only one nested collection exists:
 
-This structure keeps league data separated and simplifies queries.
+```
+nbaGames/{gameId}/players
+```
 
 ---
 
-## 3.2 How Records Connect
+## 3.1 Firestore Structure Diagram
 
-The application links records across collections using stable IDs.
+The following diagram shows how the collections and IDs connect in the system.
+
+![Firestore Database Structure](../images/data.png)
+
+*Figure: Firestore collection relationships used in the Sport Comment Web Application.*
+
+---
+
+## 3.2 Main Collections
+
+### nbaGames
+
+Each document represents a single NBA game.
 
 ```
-TeamID   → connects teams, players, and games
-GameID   → identifies a game document
-PlayerID → identifies a player document
+nbaGames/{gameId}
+
+awayScore
+awayTeam
+awayTeamId
+date
+homeScore
+homeTeam
+homeTeamId
+status
+lastUpdated
 ```
 
-### Example Relationships
+---
+
+### nbaGames/{gameId}/players (Subcollection)
+
+This subcollection stores **player statistics for a specific game**.
+
+```
+nbaGames/{gameId}/players/{playerId}
+
+playerId
+name
+team
+teamId
+position
+points
+rebounds
+assists
+steals
+blocks
+turnovers
+minutes
+fantasyPoints
+lastUpdated
+```
+
+These records represent **game-specific stats**, not permanent player information.
+
+---
+
+### nbaPlayers
+
+Stores permanent player information.
+
+```
+nbaPlayers/{playerId}
+
+id
+firstName
+lastName
+name
+headshot
+headshotNoBg
+```
+
+---
+
+### nbaTeams
+
+Stores team information.
+
+```
+nbaTeams/{teamId}
+
+teamId
+abbr
+fullName
+slug
+league
+logo
+primaryColor
+secondaryColor
+lastUpdated
+```
+
+---
+
+## 3.3 How Records Connect
+
+The system links collections using shared IDs instead of nested documents.
+
+### Team Lookup
 
 Games contain:
 
@@ -184,18 +262,61 @@ homeTeamId
 awayTeamId
 ```
 
-Players contain:
+These IDs are used to retrieve the correct teams from:
 
 ```
+nbaTeams/{teamId}
+```
+
+---
+
+### Player Lookup
+
+Game player statistics contain:
+
+```
+playerId
 teamId
 ```
 
-Player game statistics use:
+These values allow the system to retrieve the correct records from:
 
 ```
-gameId
-playerId
+nbaPlayers/{playerId}
+nbaTeams/{teamId}
 ```
+
+---
+
+## 3.4 Example Data Navigation
+
+Example workflow when loading a game page:
+
+1. Retrieve the game document
+
+```
+nbaGames/{gameId}
+```
+
+2. Use `homeTeamId` and `awayTeamId` to retrieve teams
+
+```
+nbaTeams/{teamId}
+```
+
+3. Retrieve player stats for that game
+
+```
+nbaGames/{gameId}/players/{playerId}
+```
+
+4. Use `playerId` to retrieve full player information
+
+```
+nbaPlayers/{playerId}
+```
+
+This design keeps collections independent while allowing the application to link records using IDs.
 
 ---
 
@@ -203,6 +324,8 @@ playerId
 
 This data model allows the system to:
 
-- Retrieve all games for a specific team
-- Retrieve all players belonging to a team
-- Retrieve all players who participated in a specific game
+- Retrieve teams for a specific game
+- Retrieve players who participated in that game
+- Load permanent player information
+- Store game-specific player statistics
+- Connect user comments to players and games
