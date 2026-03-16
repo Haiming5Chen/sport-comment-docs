@@ -21,7 +21,7 @@ This process ensures that comments are validated, stored correctly, and displaye
 
 ## Comment Submission Flow
 
-```text
+
 Step 1: User submits a comment from the frontend interface.
 
 Step 2: The frontend sends a request to the backend API.
@@ -36,7 +36,7 @@ Step 4: If authentication is valid, the backend stores the comment in the databa
 Step 5: The backend returns the updated comment data to the frontend.
 
 Step 6: The frontend updates the comment thread on the page.
-```
+
 
 ## Developer Notes
 
