@@ -12,6 +12,13 @@ Each sports event has its own discussion area. Finding the correct event or play
 4. Select a finished game to view available player statistics.
 5. Click a player to open that player’s page and view comments for that game.
 
+If you are on a comment page and want to return to the player page, look for the **game badge and score panel at the top of the page**.  
+Click the area showing the **team names and score** to navigate back.
+
+![Navigation from comment page back to player page](../images/playerpage.png)
+
+*Figure: The score and team panel can be clicked to return from the comment page to the player page.*
+
 ## Results
 
 After completing these steps:
