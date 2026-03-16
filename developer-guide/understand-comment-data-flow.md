@@ -21,22 +21,20 @@ This process ensures that comments are validated, stored correctly, and displaye
 
 ## Comment Submission Flow
 
+1. The user submits a comment from the frontend interface.
 
-Step 1: User submits a comment from the frontend interface.
+2. The frontend sends a request to the backend API.
 
-Step 2: The frontend sends a request to the backend API.
+3. The backend verifies the user's authentication status.
 
-Step 3: The backend verifies the user authentication status.
+4. If authentication is valid, the backend stores the comment in the database.  
+   The comment is linked to:
+   - `userId`
+   - `eventId` or `playerId`
 
-Step 4: If authentication is valid, the backend stores the comment in the database.
-        The comment is linked to:
-        - userId
-        - eventId or playerId
+5. The backend returns the updated comment data to the frontend.
 
-Step 5: The backend returns the updated comment data to the frontend.
-
-Step 6: The frontend updates the comment thread on the page.
-
+6. The frontend updates the comment thread on the page.
 
 ## Developer Notes
 
@@ -48,6 +46,6 @@ Step 6: The frontend updates the comment thread on the page.
 
 After the process completes:
 
-- The new comment appears in the discussion thread
-- Other users can see the comment
-- Additional replies or interactions can occur
+- The new comment appears in the discussion thread.
+- Other users can see the comment.
+- Additional replies or interactions can occur.
